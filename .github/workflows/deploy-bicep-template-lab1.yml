@@ -2,20 +2,19 @@ name: Deploy Bicep Template Lab1
 
 on: workflow_dispatch
 
-jobs:
-  deploy-bicep-template:
-    runs-on: ubuntu-latest
-
 env:
   AZURE_CREDENTIALS: ${{ secrets.AZURE_CREDENTIALS }}
   AZURE_SUBSCRIPTION: ${{ secrets.AZURE_SUBSCRIPTION }}
   AZURE_RG: ${{ secrets.AZURE_RG }}
 
-    steps:
+jobs:
+  deploy-bicep-template:
+    runs-on: ubuntu-latest
 
+    steps:
       # Checkout code
     - uses: actions/checkout@main
-
+      
       # Log into Azure
     - uses: azure/login@v1
       with:
