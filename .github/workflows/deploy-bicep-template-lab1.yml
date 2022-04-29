@@ -2,9 +2,6 @@ name: Deploy Bicep Template Lab1
 
 on: workflow_dispatch
 
-env:
-  AZURE_RESOURCEGORUP: ${{ secrets.AZURE_RG }}
-
 jobs:
   deploy-bicep-template:
     runs-on: ubuntu-latest
@@ -23,7 +20,7 @@ jobs:
       uses: azure/arm-deploy@v1
       with:
         subscriptionId: ${{ secrets.AZURE_SUBSCRIPTION }}
-        resourceGroupName: $AZURE_RESOURCEGORUP
+        resourceGroupName: ${{ secrets.AZURE_RG }}
         template: ./bicep/lab1/main.bicep
         parameters: mystorageAccountName=mystoragemx1
         failOnStdErr: false
