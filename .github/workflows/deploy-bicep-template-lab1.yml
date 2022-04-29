@@ -3,9 +3,7 @@ name: Deploy Bicep Template Lab1
 on: workflow_dispatch
 
 env:
-  AZURE_CREDENTIALS: ${{ secrets.AZURE_CREDENTIALS }}
   AZURE_SUBSCRIPTION: ${{ secrets.AZURE_SUBSCRIPTION }}
-  AZURE_RG: ${{ secrets.AZURE_RG }}
 
 jobs:
   deploy-bicep-template:
@@ -25,7 +23,7 @@ jobs:
       uses: azure/arm-deploy@v1
       with:
         subscriptionId: $AZURE_SUBSCRIPTION
-        resourceGroupName: $AZURE_RG 
+        resourceGroupName: ${{ secrets.AZURE_RG }}
         template: ./bicep/lab1/main.bicep
         parameters: mystorageAccountName=mystoragemx01
         failOnStdErr: false
