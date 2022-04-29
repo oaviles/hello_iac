@@ -21,6 +21,6 @@ jobs:
       with:
         subscriptionId: ${{ secrets.AZURE_SUBSCRIPTION }}
         resourceGroupName: ${{ secrets.AZURE_RG }}
-        template: ./bicep/main.bicep
+        template: ./bicep/lab1/main.bicep
         parameters: mystorageAccountName=mystoragemx1
         failOnStdErr: false
