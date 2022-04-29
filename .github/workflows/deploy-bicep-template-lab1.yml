@@ -22,7 +22,7 @@ jobs:
     - name: Deploy Bicep Template
       uses: azure/arm-deploy@v1
       with:
-        subscriptionId: $AZURE_SUBSCRIPTION
+        subscriptionId: ${{ secrets.AZURE_SUBSCRIPTION }}
         resourceGroupName: ${{ secrets.AZURE_RG }}
         template: ./bicep/lab1/main.bicep
         parameters: mystorageAccountName=mystoragemx01
