@@ -3,7 +3,7 @@ param mystorageAccountName string = 'Your Unique Storage Name' // must be global
 param myWebAppName string = 'oa-${uniqueString(resourceGroup().id)}' // must be globally unique
 param sku string = 'F1'
 
-var myServicePlanName string = 'ASP-${myWebAppName}'
+var myServicePlanName = 'ASP-${myWebAppName}'
 
 resource stg 'Microsoft.Storage/storageAccounts@2019-06-01' = {
   name: mystorageAccountName
