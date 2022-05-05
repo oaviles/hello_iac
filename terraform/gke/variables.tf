@@ -17,7 +17,7 @@ variable "gcp_region" {
 variable "gke_cluster_name" {
   description = "GKE cluster name"
   type        = string
-  default     = "Arc-GKE-Demo"
+  default     = "oa-gke-demo"
 }
 
 variable "admin_username" {
