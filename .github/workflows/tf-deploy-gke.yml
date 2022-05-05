@@ -1,4 +1,4 @@
-name: "Deploying GKE with GitHub Actions"
+name: "Terraform Deploy GKE"
 
 on: workflow_dispatch
 

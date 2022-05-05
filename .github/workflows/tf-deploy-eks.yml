@@ -1,4 +1,4 @@
-name: "Deploying EKS with GitHub Actions"
+name: "Terraform Deploy EKS"
 
 on: workflow_dispatch
 
