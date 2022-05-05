@@ -1,5 +1,6 @@
 terraform {
   backend "remote" {
+    # hostname     = "app.terraform.io"
     organization = "personal-mobile"
     workspaces {
       name = "iac-gke"
@@ -8,15 +9,12 @@ terraform {
 }
 
 provider "google" {
+  #credentials = "${file("${var.credentials}")}"
   credentials = var.gcpcredentials
   project     = var.gcp_project_id
   region      = "us-central1"
 }
 
-resource "azurerm_resource_group" "arcdemo" {
-  name     = var.resource_group_name
-  location = var.location
-}
 
 resource "google_container_cluster" "arcdemo" {
   name     = var.gke_cluster_name
@@ -28,7 +26,14 @@ resource "google_container_cluster" "arcdemo" {
   remove_default_node_pool = true
   initial_node_count       = 1
 
-  depends_on = [azurerm_resource_group.arcdemo]
+  # master_auth {
+  #  username = var.admin_username
+  #  password = var.admin_password
+
+  #  client_certificate_config {
+  #    issue_client_certificate = false
+  #  }
+  # }
 }
 
 resource "google_container_node_pool" "primary_preemptible_nodes" {

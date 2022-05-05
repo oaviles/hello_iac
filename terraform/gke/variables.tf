@@ -14,7 +14,6 @@ variable "gke_cluster_name" {
 variable "admin_username" {
   description = "GKE control plane administrator username"
   type        = string
-  default     = "arcdemo"
 }
 
 variable "admin_password" {
