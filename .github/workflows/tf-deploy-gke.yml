@@ -1,15 +1,15 @@
-name: "Deploying EKS with GitHub Actions"
+name: "Deploying GKE with GitHub Actions"
 
 on: workflow_dispatch
 
 jobs:
   Terraform-Deploy:
-    name: "Deploy EKS"
+    name: "Deploy GKE"
     runs-on: ubuntu-latest
-    environment: PoC-EKS
+    environment: PoC-GKE
     defaults:
       run:
-        working-directory: "./terraform/eks"
+        working-directory: "./terraform/gke"
     
     steps:
       - name: Checkout
