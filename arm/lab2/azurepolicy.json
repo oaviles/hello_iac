@@ -1,35 +1,18 @@
 {
-    "mode": "Indexed",
-    "policyRule": {
-      "if": {
-        "not": {
-          "field": "[concat('tags[', parameters('tagName'), ']')]",
-          "in": "[parameters('tagValue')]"
-        }
-      },
-      "then": {
-        "effect": "deny"
-      }
-    },
-    "parameters": {
-      "tagName": {
-        "type": "String",
-        "metadata": {
-          "displayName": "Tag Name",
-          "description": "Name of the tag, such as 'Environment'"
-        }
-      },
-      "tagValue": {
-        "type": "Array",
-        "metadata": {
-          "displayName": "Tag Value",
-          "description": "Value of the tag, such as 'Prod'"
+    "properties": {
+        "displayName": "<displayName>",
+        "description": "<description>",
+        "mode": "<mode>",
+        "parameters": {
+                <parameters>
         },
-        "allowedValues": [
-          "Dev",
-          "Test",
-          "Prod"
-        ]
-      }
+        "policyRule": {
+            "if": {
+                <rule>
+            },
+            "then": {
+                "effect": "<effect>"
+            }
+        }
     }
-  }
+}
