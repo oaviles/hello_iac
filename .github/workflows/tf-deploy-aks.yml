@@ -1,0 +1,42 @@
+name: 'Terraform Apply AKS'
+
+on: workflow_dispatch
+
+jobs:
+  Terraform-Apply-AKS:
+    
+    runs-on: ubuntu-latest
+    
+    defaults:
+      run:
+        working-directory: "./terraform/aks"
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    # Install the latest version of Terraform CLI and configure the Terraform CLI configuration file with a Terraform Cloud user API token
+    - name: Setup Terraform
+      uses: hashicorp/setup-terraform@v1
+      with:
+        cli_config_credentials_token: ${{ secrets.TF_API_TOKEN }}
+
+    # Checks that all Terraform configuration files adhere to a canonical format
+    - name: Terraform Format
+      id: fmt 
+      run: terraform fmt -recursive
+    
+    # Initialize a new or existing Terraform working directory by creating initial files, loading any remote state, downloading modules, etc.
+    - name: Terraform Init
+      id: init
+      run: terraform init -no-color
+
+
+    # Generates an execution plan for Terraform
+    - name: Terraform Plan
+      id: plan
+      run: terraform plan -no-color
+      
+    - name: Terraform Apply
+      id: apply
+      run: terraform apply -auto-approve -no-color
