@@ -1,0 +1,28 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "storageAccounts_name": {
+            "defaultValue": "oamx",
+            "type": "String"
+        }
+    },
+    "functions": [],
+    "variables": {
+    "storageAccountName": "[concat(parameters('storageAccounts_name'), uniquestring(resourceGroup().id))]"
+    },
+    "resources": [{
+        "name": "[variables('storageAccountName')]",
+        "type": "Microsoft.Storage/storageAccounts",
+        "apiVersion": "2019-06-01",
+    //   "tags": {
+    //        "displayName": "[variables('storageAccountName')]"
+    //    },
+        "location": "[resourceGroup().location]",
+        "kind": "StorageV2",
+        "sku": {
+            "name": "Standard_LRS",
+            "tier": "Standard"
+        }
+    }]
+}

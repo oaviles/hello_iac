@@ -1,0 +1,24 @@
+on: workflow_dispatch
+name: ARM-Template Deploy Storage
+jobs:
+  arm-template-deploy:
+    runs-on: ubuntu-latest
+    steps:
+
+      # Checkout code
+    - uses: actions/checkout@main
+
+      # Log into Azure
+    - uses: azure/login@v1
+      with:
+        creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+      # Deploy ARM template
+    - name: Run ARM deploy
+      uses: azure/arm-deploy@v1
+      with:
+        subscriptionId: ${{ secrets.AZURE_SUBSCRIPTION }}
+        resourceGroupName: iaclab2-1992
+        template: ./arm/lab2/azure-deploy-storage.json
+        # parameters: storageAccounts_name=oamx
+        # parameters: ./lab-storage/parameters.json
