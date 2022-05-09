@@ -4,9 +4,9 @@ on: workflow_dispatch
 
 jobs:
   Terraform-Apply-AKS:
-    
+    name: "Deploy AKS"
     runs-on: ubuntu-latest
-    
+    environment: PoC-EKS
     defaults:
       run:
         working-directory: "./terraform/aks"
