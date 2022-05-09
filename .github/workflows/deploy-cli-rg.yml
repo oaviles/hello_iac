@@ -29,5 +29,5 @@ jobs:
           
       - run: |
           chmod 775 ./arm/lab2/deploy-rg.sh
-          ./cli/deploy-dev-env.sh $APP_ID $SP_PWD $TENANT_ID
+          ./arm/lab2/deploy-rg.sh $APP_ID $SP_PWD $TENANT_ID
         shell: bash
