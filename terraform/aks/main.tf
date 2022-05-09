@@ -25,7 +25,7 @@ resource "azurerm_resource_group" "rg" {
 resource "azurerm_kubernetes_cluster" "aks" {
   name                = var.aks_clustername
   location            = azurerm_resource_group.rg.location
-  resource_group_name = azurerm_resource_group.name
+  resource_group_name = var.azure_rg
   dns_prefix          = var.aks_clustername_dnsprefix
 
   default_node_pool {
