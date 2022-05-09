@@ -1,0 +1,33 @@
+# This is a basic workflow to help you get started with Actions
+
+name: Deploy Azure-RG with Script
+
+# Controls when the workflow will run
+on: workflow_dispatch
+
+env:
+  APP_ID: ${{ secrets.CLIENTID }}
+  SP_PWD: ${{ secrets.CLIENTSECRET }}
+  TENANT_ID: ${{ secrets.TENANTID }}
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  script-to-deploy-rg:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v3
+      
+      - name: Azure Login
+        uses: azure/login@v1
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+          
+      - run: |
+          chmod 775 ./arm/lab2/deploy-rg.sh
+          ./cli/deploy-dev-env.sh $APP_ID $SP_PWD $TENANT_ID
+        shell: bash
