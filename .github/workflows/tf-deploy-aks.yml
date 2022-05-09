@@ -6,7 +6,7 @@ jobs:
   Terraform-Apply-AKS:
     name: "Deploy AKS"
     runs-on: ubuntu-latest
-    environment: PoC-EKS
+    environment: PoC-AKS
     defaults:
       run:
         working-directory: "./terraform/aks"
