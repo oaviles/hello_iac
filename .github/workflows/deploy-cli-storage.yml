@@ -28,6 +28,6 @@ jobs:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
           
       - run: |
-          chmod 775 ./cli/lab2/deploy-dev-env.sh
-          ./cli/lab2/deploy-dev-env.sh $APP_ID $SP_PWD $TENANT_ID
+          chmod 775 ./cli/lab1/deploy-storage.sh
+          ./cli/lab1/deploy-storage.sh $APP_ID $SP_PWD $TENANT_ID
         shell: bash
