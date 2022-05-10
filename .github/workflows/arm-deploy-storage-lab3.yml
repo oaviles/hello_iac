@@ -1,13 +1,33 @@
-name: Lab3 Assignment Policy to RG
+name: Lab3 ARM-Template Deploy Storage
 
 on: workflow_dispatch
 
 env:
-  POLICY_NAME: audit-tag-x-all-services
+  AZURERG: iac-armlab2
 
 jobs:
 
+  create-azure-rg:
+    runs-on: ubuntu-latest
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v3
+      
+      - name: Azure Login
+        uses: azure/login@v1
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+          
+      - name: Azure CLI script
+        uses: azure/CLI@v1
+        with:
+          azcliversion: 2.30.0 # Optional
+          inlineScript: |
+            az group create --location eastus -n $AZURERG
+
   arm-template-deploy:
+    if: ${{ success() }}
+    needs: create-azure-rg
     runs-on: ubuntu-latest
     steps:
       # Checkout code
@@ -18,9 +38,12 @@ jobs:
       with:
         creds: ${{ secrets.AZURE_CREDENTIALS }}
 
-    - name: Azure CLI script
-      uses: azure/CLI@v1
+      # Deploy ARM template
+    - name: Run ARM deploy
+      uses: azure/arm-deploy@v1
       with:
-        azcliversion: 2.30.0
-        inlineScript: |
-          az policy assignment create --name 'audit-all-tags' --scope "${{ secrets.SCOPE }}" --policy $POLICY_NAME -p './arm/lab3/policy_definition/azurepolicy.assing-parm.json'
+        subscriptionId: ${{ secrets.AZURE_SUBSCRIPTION }}
+        resourceGroupName: ${{ env.AZURERG }}
+        template: ./arm/lab2/azure-deploy-storage.json
+        # parameters: storageAccounts_name=oamx
+        # parameters: ./lab-storage/parameters.json
