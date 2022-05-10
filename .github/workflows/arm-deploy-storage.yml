@@ -26,7 +26,7 @@ jobs:
             az group create --location eastus -n $AZURERG
 
   arm-template-deploy:
-    if: ${{ failure() }
+    if: ${{ failure() }}
     needs: create-azure-rg
     runs-on: ubuntu-latest
     steps:
