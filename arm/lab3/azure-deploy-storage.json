@@ -16,7 +16,7 @@
         "type": "Microsoft.Storage/storageAccounts",
         "apiVersion": "2019-06-01",
        "tags": {
-            "Environment": "Test"
+            "environment": "Test"
         },
         "location": "[resourceGroup().location]",
         "kind": "StorageV2",
