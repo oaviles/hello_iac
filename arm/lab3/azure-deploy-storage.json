@@ -15,9 +15,9 @@
         "name": "[variables('storageAccountName')]",
         "type": "Microsoft.Storage/storageAccounts",
         "apiVersion": "2019-06-01",
-    //   "tags": {
-    //        "environment": "PoC"
-    //    },
+       "tags": {
+            "environment": "PoC"
+        },
         "location": "[resourceGroup().location]",
         "kind": "StorageV2",
         "sku": {
