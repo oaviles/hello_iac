@@ -1,3 +1,4 @@
+// https://docs.microsoft.com/en-us/azure/governance/policy/tutorials/create-custom-policy-definition#compose-the-definition
 {
     "properties": {
         "displayName": "<displayName>",
