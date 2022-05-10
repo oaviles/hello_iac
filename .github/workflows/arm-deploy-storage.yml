@@ -1,10 +1,35 @@
-on: workflow_dispatch
 name: ARM-Template Deploy Storage
+
+on: workflow_dispatch
+
+env:
+  AZURERG: iac-armlab2
+
 jobs:
-  arm-template-deploy:
+
+  create-azure-rg:
     runs-on: ubuntu-latest
     steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v3
+      
+      - name: Azure Login
+        uses: azure/login@v1
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+          
+      - name: Azure CLI script
+        uses: azure/CLI@v1
+        with:
+          azcliversion: 2.30.0 # Optional
+          inlineScript: |
+            az group create --location eastus -n $AZURERG
 
+  arm-template-deploy:
+    if: ${{ failure() }
+    needs: create-azure-rg
+    runs-on: ubuntu-latest
+    steps:
       # Checkout code
     - uses: actions/checkout@main
 
@@ -18,7 +43,7 @@ jobs:
       uses: azure/arm-deploy@v1
       with:
         subscriptionId: ${{ secrets.AZURE_SUBSCRIPTION }}
-        resourceGroupName: iaclab2-1992
+        resourceGroupName: $AZURERG
         template: ./arm/lab2/azure-deploy-storage.json
         # parameters: storageAccounts_name=oamx
         # parameters: ./lab-storage/parameters.json
