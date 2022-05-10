@@ -23,5 +23,5 @@ jobs:
       with:
         azcliversion: 2.30.0
         inlineScript: |
-          az policy assignment create --scope "${{ secrets.SCOPE }}" --policy $POLICY_NAME -p "{ \"Enviroment\": \
+          az policy assignment create --scope "${{ secrets.SCOPE }}" --policy $POLICY_NAME -p "{ \"tagValue\": \
                 { \"value\": [ \"Dev\", \"Test\", \"Prod\" ] } }"
