@@ -3,7 +3,7 @@ RESOURCE_GROUP=iacdevsquad-$RANDOM
 SUBNET_NAME=aks-subnet
 VNET_NAME=aks-vnet
 AKS_CLUSTER_NAME=aksworkshop-$RANDOM
-ACR_NAME=acr$RANDOM
+ACR_NAME=oaacr$RANDOM
 
 az login --service-principal -u $1 -p $2 --tenant $3
 

@@ -15,6 +15,9 @@
         "name": "[variables('storageAccountName')]",
         "type": "Microsoft.Storage/storageAccounts",
         "apiVersion": "2019-06-01",
+    //   "tags": {
+    //        "displayName": "[variables('storageAccountName')]"
+    //    },
         "location": "[resourceGroup().location]",
         "kind": "StorageV2",
         "sku": {
