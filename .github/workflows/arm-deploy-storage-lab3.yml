@@ -23,6 +23,6 @@ jobs:
       with:
         subscriptionId: ${{ secrets.AZURE_SUBSCRIPTION }}
         resourceGroupName: ${{ env.AZURERG }}
-        template: ./arm/lab2/azure-deploy-storage.json
+        template: ./arm/lab3/azure-deploy-storage.json
         # parameters: storageAccounts_name=oamx
         # parameters: ./lab-storage/parameters.json
