@@ -11,6 +11,7 @@ Infrastructure as code, reference architecture:
 - [Infrastructure as code](https://docs.microsoft.com/en-us/dotnet/architecture/cloud-native/infrastructure-as-code)
 - [Using IaC on Azure](https://docs.microsoft.com/en-us/devops/deliver/what-is-infrastructure-as-code#using-iac-on-azure)
 - [Azure Policy](https://docs.microsoft.com/en-us/azure/governance/policy/overview)
+- [Azure Policy definition structure](https://docs.microsoft.com/en-us/azure/governance/policy/concepts/definition-structure)
 
 ### Check More DevSquad Projects
 * [DevSquad Main Project](https://github.com/microsoft/fast-prototyping)

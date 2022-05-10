@@ -1,11 +1,10 @@
-// https://docs.microsoft.com/en-us/azure/governance/policy/tutorials/create-custom-policy-definition#compose-the-definition
 {
-    "properties": {
+    "properties": { 
         "displayName": "<displayName>",
         "description": "<description>",
         "mode": "<mode>",
         "parameters": {
-                <parameters>
+                <parameters> 
         },
         "policyRule": {
             "if": {
