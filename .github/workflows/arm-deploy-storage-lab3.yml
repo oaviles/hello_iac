@@ -6,28 +6,7 @@ env:
   AZURERG: iac-armlab2
 
 jobs:
-
-  create-azure-rg:
-    runs-on: ubuntu-latest
-    steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v3
-      
-      - name: Azure Login
-        uses: azure/login@v1
-        with:
-          creds: ${{ secrets.AZURE_CREDENTIALS }}
-          
-      - name: Azure CLI script
-        uses: azure/CLI@v1
-        with:
-          azcliversion: 2.30.0 # Optional
-          inlineScript: |
-            az group create --location eastus -n $AZURERG
-
   arm-template-deploy:
-    if: ${{ success() }}
-    needs: create-azure-rg
     runs-on: ubuntu-latest
     steps:
       # Checkout code
