@@ -23,4 +23,5 @@ jobs:
       with:
         azcliversion: 2.30.0
         inlineScript: |
-          az policy assignment create --scope "${{ secrets.SCOPE }}" --policy $POLICY_NAME -p './arm/lab3/policy_definition/azurepolicy.assing-parm.json'
+          az policy assignment create --scope "${{ secrets.SCOPE }}" --policy $POLICY_NAME -p "{ \"Enviroment\": \
+                { \"value\": [ \"Dev\", \"Test\", \"Prod\" ] } }"
