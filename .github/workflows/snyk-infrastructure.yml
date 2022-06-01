@@ -10,7 +10,7 @@
 # For more examples, including how to limit scans to only high-severity issues
 # and fail PR checks, see https://github.com/snyk/actions/
 
-name: Snyk Infrastructure as Code
+name: Security Scanning IaC Templates
 
 on: workflow_dispatch
 
@@ -27,7 +27,7 @@ permissions:
   contents: read
 
 jobs:
-  snyk:
+  security-scanning:
     permissions:
       contents: read # for actions/checkout to fetch code
       security-events: write # for github/codeql-action/upload-sarif to upload SARIF results
