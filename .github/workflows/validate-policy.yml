@@ -1,0 +1,26 @@
+name: Policy Validate
+
+on:
+  workflow_dispatch:
+  
+env:
+  AZURE_REGION: eastus2
+  RESOURCE_GROUP_NAME: Ignite2022_Demo 
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  create-resource-group:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+    steps:
+    - name: Azure Login
+      uses: azure/login@v1
+      with:
+        creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+    - name: Create Azure RG
+      uses: azure/CLI@v1
+      with:
+        inlineScript: |
+          az group create --location ${{ env.AZURE_REGION }} --name ${{ env.RESOURCE_GROUP_NAME }}
