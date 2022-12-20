@@ -3,7 +3,8 @@ name: Lab2 ARM-Template Deploy Storage
 on: workflow_dispatch
 
 env:
-  AZURERG: iac-armlab2
+  AZURERG: oa-iac-armlab2
+  AZUREREGION: eastus
 
 jobs:
 
@@ -23,7 +24,7 @@ jobs:
         with:
           azcliversion: 2.30.0 # Optional
           inlineScript: |
-            az group create --location eastus -n $AZURERG
+            az group create --location $AZUREREGION -n $AZURERG
 
   arm-template-deploy:
     if: ${{ success() }}
@@ -45,5 +46,5 @@ jobs:
         subscriptionId: ${{ secrets.AZURE_SUBSCRIPTION }}
         resourceGroupName: ${{ env.AZURERG }}
         template: ./arm/lab2/azure-deploy-storage.json
-        # parameters: storageAccounts_name=oamx
+        parameters: storageAccounts_name=oaeymxlab2
         # parameters: ./lab-storage/parameters.json
