@@ -1,0 +1,24 @@
+trigger: none
+
+pool:
+  vmImage: ubuntu-latest
+
+
+steps:
+
+- task: Bash@3
+  inputs:
+    targetType: 'inline'
+    script: |
+      curl https://static.snyk.io/cli/latest/snyk-linux -o snyk
+      chmod +x ./snyk
+      mv ./snyk /usr/local/bin/
+  displayName: 'Install Snyk'
+  
+- script: |
+    snyk auth $(SNYK_TOKEN)
+  displayName: 'Skyk Authenticaton'
+
+- script: |
+   snyk iac test . --report --target-name=enterprise-scale --detection-depth=1
+  displayName: 'Scan IaC: Terraform Enterprise Scale'
