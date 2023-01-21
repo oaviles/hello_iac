@@ -1,0 +1,49 @@
+
+trigger: none
+
+pool:
+  vmImage: ubuntu-latest
+
+steps:
+
+- task: TerraformInstaller@0
+  displayName: 'Install Terraform'
+  inputs:
+    terraformVersion: 'latest'
+
+- task: Bash@3
+  displayName: 'Init'
+  inputs:
+    targetType: 'inline'
+    script: |
+      # Write your commands here
+      cd sqldatabase
+      terraform init
+
+- task: Bash@3
+  displayName: 'Plan'
+  env:
+    ARM_SUBSCRIPTION_ID: $(arm-subscription-id)
+    ARM_CLIENT_ID:       $(arm-client-id)
+    ARM_CLIENT_SECRET:   $(arm-client-secret)
+    ARM_TENANT_ID:       $(arm-tenant-id)
+  inputs:
+    targetType: 'inline'
+    script: |
+      # Write your commands here
+      cd sqldatabase
+      terraform plan
+
+- task: Bash@3
+  displayName: 'Apply'
+  env:
+    ARM_SUBSCRIPTION_ID: $(arm-subscription-id)
+    ARM_CLIENT_ID:       $(arm-client-id)
+    ARM_CLIENT_SECRET:   $(arm-client-secret)
+    ARM_TENANT_ID:       $(arm-tenant-id)
+  inputs:
+    targetType: 'inline'
+    script: |
+      # Write your commands here
+      cd sqldatabase
+      terraform apply -auto-approve
