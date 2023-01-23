@@ -31,8 +31,7 @@ steps:
     targetType: 'inline'
     script: |
       # Write your commands here
-      cd sqldatabase
-      terraform plan
+      terraform -chdir=sqldatabase plan
 
 - task: Bash@3
   displayName: 'Apply'
@@ -45,5 +44,4 @@ steps:
     targetType: 'inline'
     script: |
       # Write your commands here
-      cd sqldatabase
-      terraform apply -auto-approve
+      terraform -chdir=sqldatabase apply -auto-approve
