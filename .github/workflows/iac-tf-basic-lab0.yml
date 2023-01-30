@@ -1,5 +1,5 @@
 
-name: 01 Lab about IaC Resource
+name: Lab about IaC Terraform CLI
 
 # Controls when the workflow will run
 on: workflow_dispatch
