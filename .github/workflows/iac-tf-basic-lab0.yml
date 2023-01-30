@@ -1,6 +1,6 @@
 # https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/guides/service_principal_client_secret
 
-name: Lab about IaC Terraform CLI
+name: Lab1 about IaC Terraform CLI
 
 # Controls when the workflow will run
 on: workflow_dispatch
