@@ -1,3 +1,4 @@
+# https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/guides/service_principal_client_secret
 
 name: Lab about IaC Terraform CLI
 
@@ -37,10 +38,20 @@ jobs:
       - name: Terreform Plan
         run: |
           terraform -chdir=terraform/lab0 plan
+        env:
+          ARM_CLIENT_ID: ${{ secrets.CLIENTID }}
+          ARM_CLIENT_SECRET: ${{ secrets.CLIENTSECRET }}
+          ARM_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION }}
+          ARM_TENANT_ID: ${{ secrets.TENANTID }}
           
       - name: Terreform Apply
         run: |
           terraform -chdir=terraform/lab0 apply -auto-approve
+        env:
+          ARM_CLIENT_ID: ${{ secrets.CLIENTID }}
+          ARM_CLIENT_SECRET: ${{ secrets.CLIENTSECRET }}
+          ARM_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION }}
+          ARM_TENANT_ID: ${{ secrets.TENANTID }}
             
           
             
