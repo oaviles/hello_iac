@@ -5,7 +5,7 @@ variable "azure-rg" {
 }
 
 variable "azure-storage-name" {
-  description = "Azure Resource Group"
+  description = "Azure Storage"
   type        = string
   default     = "oalab1mx"
 }
