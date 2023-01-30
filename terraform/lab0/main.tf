@@ -1,15 +1,3 @@
-terraform {
-   required_providers {
-    azurerm = "~> 2.11.0"
-  }
-  backend "remote" {
-    organization = "personal-mobile"
-    workspaces {
-      name = "IaC_Workshop"
-    }
-  }
-}
-
 provider "azurerm" {
   # The "feature" block is required for AzureRM provider 2.x.
   # If you're using version 1.x, the "features" block is not allowed.
