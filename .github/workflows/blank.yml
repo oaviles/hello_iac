@@ -3,7 +3,7 @@ name: Lab 0 Demo
 on: workflow_dispatch
 
 env:
-  AZURERG: oa-iac-armlab2
+  AZURERG: lab0-demo
   AZUREREGION: eastus
 
 jobs:
