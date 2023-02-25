@@ -1,4 +1,4 @@
-name: Lab2 ARM-Template Deploy Storage
+name: Lab 0 Demo
 
 on: workflow_dispatch
 
