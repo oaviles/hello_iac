@@ -37,14 +37,14 @@ jobs:
         
       - name: Terreform Init
         run: |
-          cd terraform/aks
+          cd terraform/lab2
           terraform init
           
       - name: Terreform Plan
         run: |
-          terraform -chdir=terraform/aks plan
+          terraform -chdir=terraform/lab2 plan
           
       - name: Terreform Apply
         run: |
-          terraform -chdir=terraform/aks apply 
+          terraform -chdir=terraform/lab2 apply 
           
