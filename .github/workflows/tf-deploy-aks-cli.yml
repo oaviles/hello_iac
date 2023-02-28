@@ -1,5 +1,5 @@
 
-name: 'Terraform Deploy AKS (Not State)'
+name: 'Terraform Deploy AKS (CLI)'
 
 # Controls when the workflow will run
 on: workflow_dispatch
