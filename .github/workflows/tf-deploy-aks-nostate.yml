@@ -1,5 +1,5 @@
 
-name: Lab AKS IaC Terraform (Not State)
+name: 'Terraform Deploy AKS (Not State)'
 
 # Controls when the workflow will run
 on: workflow_dispatch
