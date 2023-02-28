@@ -6,7 +6,7 @@ provider "azurerm" {
 
 resource "azurerm_resource_group" "rg" {
   name     = var.azure_rg
-  location = "East US"
+  location = "West US"
 }
 
 resource "azurerm_kubernetes_cluster" "aks" {
