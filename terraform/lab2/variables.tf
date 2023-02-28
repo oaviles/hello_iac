@@ -7,11 +7,11 @@ variable "azure_rg" {
 variable "aks_clustername" {
   description = "AKS Cluster Name"
   type        = string
-  default     = "AKSCluster-Demo"
+  default     = "AKSCluster-TF"
 }
 
 variable "aks_clustername_dnsprefix" {
   description = "AKS Cluster DNS Prefix"
   type        = string
-  default     = "aksclusterdemo"
+  default     = "aksclustertf"
 }
