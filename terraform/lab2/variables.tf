@@ -1,7 +1,7 @@
 variable "azure_rg" {
   description = "IaC_Workshop Resource Group"
   type        = string
-  default     = "PoC_Zone"
+  default     = "PoC_TF"
 }
 
 variable "aks_clustername" {
