@@ -46,6 +46,5 @@ jobs:
           
       - name: Terreform Apply
         run: |
-          terraform -chdir=terraform/aks apply    
-TrainBlog
-About
+          terraform -chdir=terraform/aks apply 
+          
