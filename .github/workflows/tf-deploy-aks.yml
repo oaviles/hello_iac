@@ -1,4 +1,4 @@
-name: 'Terraform Apply AKS'
+name: 'Terraform Deploy AKS'
 
 on: workflow_dispatch
 
