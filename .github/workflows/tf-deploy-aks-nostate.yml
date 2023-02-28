@@ -46,14 +46,6 @@ jobs:
           
       - name: Terreform Apply
         run: |
-          terraform -chdir=terraform/aks apply
-            
-          
-            
-          
-      
-          
-
+          terraform -chdir=terraform/aks apply    
 TrainBlog
 About
-hello_gcp/iac-basic-lab.yml at master · oaviles/hello_gcp
