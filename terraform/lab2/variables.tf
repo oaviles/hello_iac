@@ -15,3 +15,9 @@ variable "aks_clustername_dnsprefix" {
   type        = string
   default     = "aksclustertf"
 }
+
+variable "azure_location" {
+  description = "Azure Region"
+  type        = string
+  default     = "West US"
+}
