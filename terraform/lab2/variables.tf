@@ -21,3 +21,15 @@ variable "azure_location" {
   type        = string
   default     = "West US"
 }
+
+variable "worker_node_size" {
+  description = "Azure Instance"
+  type        = string
+  default     = "Standard_D2_v2"
+}
+
+variable "worker_node_count" {
+  description = "Workers Node Count"
+  type        = number
+  default     = 1
+}
