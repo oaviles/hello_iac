@@ -6,7 +6,7 @@ provider "azurerm" {
 
 resource "azurerm_resource_group" "rg" {
   name     = var.azure_rg
-  location = "West US"
+  location = var.azure_location
 }
 
 resource "azurerm_kubernetes_cluster" "aks" {
@@ -17,8 +17,8 @@ resource "azurerm_kubernetes_cluster" "aks" {
 
   default_node_pool {
     name       = "default"
-    node_count = 1
-    vm_size    = "Standard_D2_v2"
+    node_count = var.worker_node_count
+    vm_size    = var.worker_node_size
   }
 
   identity {
