@@ -7,6 +7,11 @@ resource "azurerm_resource_group" "rg" {
   location = var.resource_group_location
 }
 
+resource "time_sleep" "wait_10_seconds" {
+  depends_on = [azurerm_resource_group.rg]
+  create_duration = "10s"
+}
+
 resource "azurerm_kubernetes_cluster" "aks_cluster" {
   name                = var.aks_cluster_name
   location            = var.resource_group_location
