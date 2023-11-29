@@ -10,18 +10,18 @@ jobs:
       uses: azure/login@v1
       with:
         creds: ${{ secrets.AZURE_CREDENTIALS }}
-    - name: Install Bicep CLI
-      run: |
-        curl -Lo bicep https://github.com/Azure/bicep/releases/latest/download/bicep-linux-x64
-        chmod +x ./bicep
-        sudo mv ./bicep /usr/local/bin/bicep
-        bicep --help
-    - name: Build Bicep file
-      run: |
-        bicep build bicep/lab4/main.bicep
+  #  - name: Install Bicep CLI
+  #    run: |
+  #      curl -Lo bicep https://github.com/Azure/bicep/releases/latest/download/bicep-linux-x64
+  #      chmod +x ./bicep
+  #      sudo mv ./bicep /usr/local/bin/bicep
+  #      bicep --help
+  #  - name: Build Bicep file
+  #    run: |
+  #      bicep build bicep/lab4/main.bicep
     - name: Deploy Bicep file
       uses: azure/CLI@v1
       with:
        # azcliversion: 2.0.72
         inlineScript: |
-          az deployment group create --resource-group RG_Squad2_Challenge5 --template-file bicep/lab4/main.json
+          az deployment group create --resource-group RG_Squad2_Challenge5 --template-file bicep/lab4/main.bicep
