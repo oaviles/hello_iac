@@ -1,0 +1,42 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+- none
+
+pool:
+  vmImage: ubuntu-latest
+
+variables:
+  resource_group_name: 'POC_Zone_2'
+  location: "eastus2"
+  storage_account_name: 'oatfdemoscript003'
+  script_file: script2.sh
+
+steps:
+
+- task: TerraformInstaller@1
+  inputs:
+    terraformVersion: 'latest'
+  displayName: 'Installing Terraform'
+
+- task: Bash@3
+  inputs:
+    targetType: 'inline'
+    script: |
+      echo 'Converting file from windows to unix format'
+      sed -i 's/\r$//' $(script_file)
+      chmod +x $(script_file)
+    workingDirectory: '$(System.DefaultWorkingDirectory)/scripts'
+  displayName: 'Converting file from windows to unix format'
+
+- task: Bash@3
+  inputs:
+    targetType: 'inline'
+    script: |
+      echo Running script calling Terraform.
+      ./$(script_file) $(resource_group_name) $(location) $(storage_account_name) $(subscription_id) $(client_id) $(client_secret) $(tenant_id) $(System.DefaultWorkingDirectory)
+    workingDirectory: '$(System.DefaultWorkingDirectory)/scripts'
+  displayName: 'Run script to deploy infra'
