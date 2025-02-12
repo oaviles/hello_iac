@@ -1,0 +1,33 @@
+name: Deploy Infra with Shell Script
+
+on: workflow_dispatch
+
+env:
+  AZURE_RG: POC_Zone_1
+  STORAGE_ACCOUNT_NAME: oatfdemoscript001 
+
+jobs:
+
+  running-scripts:
+    runs-on: ubuntu-latest
+    steps:
+    
+    - name: Check Out
+      uses: actions/checkout@v3
+
+    - name: Setup Terraform
+      uses: hashicorp/setup-terraform@v3
+
+    - name: Run Script 3
+      timeout-minutes: 10 # Optional
+      env:
+          subscription_id: ${{ secrets.SUBSCRIPTION_ID }}
+          client_id: ${{ secrets.CLIENT_ID }}
+          client_secret: ${{ secrets.CLIENT_SECRET }}
+          tenant_id: ${{ secrets.TENANT_ID }}
+          resource_group_name: ${{ env.AZURE_RG }}
+          location: ${{ secrets.AZURE_REGION }}
+          storage_account_name: ${{ env.STORAGE_ACCOUNT_NAME }}
+      run: |
+        chmod +x ./scripts/script1.sh
+        ./scripts/script1.sh
